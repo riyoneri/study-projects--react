@@ -16,10 +16,10 @@ export default function App() {
   };
 
   const handleNegative = () => {
-    setCurrentValue(currentValue * -1);
+    setCurrentValue(currentValue * -1)
   };
 
-  const handle = () => {};
+  const handleFunctionClick = () => {};
 
   const handleOperationClick = (event) => {
     const clickedOperation = event.target.textContent;
@@ -40,7 +40,7 @@ export default function App() {
         <span className="text-white text-2xl col-span-4 text-end px-3 py-2">
           {currentValue}
         </span>
-        <Button onClick={handle}>AC</Button>
+        <Button onClick={handleFunctionClick}>AC</Button>
         <Button onClick={handleNegative}>+/-</Button>
         <Button onClick={handleOperationClick}>%</Button>
         <Button
