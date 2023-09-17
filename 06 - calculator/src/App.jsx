@@ -5,34 +5,33 @@ import Button from "./components/Button";
 export default function App() {
   const [firstNum, setFirstNum] = useState(0);
   const [lastNum, setLastNum] = useState(0);
-  const [operation, setOperation] = useState("");
+  const [operation, setOperation] = useState(null);
 
-  const [currentValue, setCurrentValue] = useState(firstNum);
+  const [currentValue, setCurrentValue] = useState(0);
 
   const handleNumberClick = (event) => {
     const newNumber = event.target.textContent;
 
-    if (!operation) {
-      setFirstNum((prevFirstNum) => +`${prevFirstNum}${newNumber}`);
-
-      setCurrentValue(+`${firstNum}${newNumber}`);
-    }
-
-    if (operation) {
-      setLastNum((prevLastNum) => +`${prevLastNum}${newNumber}`);
-
-      setCurrentValue(+`${lastNum}${newNumber}`);
-    }
+    setCurrentValue((prevCurrentValue) => +`${prevCurrentValue}${newNumber}`);
   };
 
-  const handleFunctionClick = () => {};
+  const handleNegative = () => {
+    setCurrentValue(currentValue * -1);
+  };
+
+  const handle = () => {};
 
   const handleOperationClick = (event) => {
-    const operation = event.target.textContent;
-    if(operation) {
-      
+    const clickedOperation = event.target.textContent;
+    if (!operation) {
+      setFirstNum(currentValue);
+      setCurrentValue(0);
+    } else {
+      setLastNum(currentValue);
+      setCurrentValue(0);
     }
-    setOperation(operation);
+
+    setOperation(clickedOperation);
   };
 
   return (
@@ -41,8 +40,8 @@ export default function App() {
         <span className="text-white text-2xl col-span-4 text-end px-3 py-2">
           {currentValue}
         </span>
-        <Button onClick={handleFunctionClick}>AC</Button>
-        <Button onClick={handleFunctionClick}>+/-</Button>
+        <Button onClick={handle}>AC</Button>
+        <Button onClick={handleNegative}>+/-</Button>
         <Button onClick={handleOperationClick}>%</Button>
         <Button
           onClick={handleOperationClick}
