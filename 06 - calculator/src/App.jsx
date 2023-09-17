@@ -16,7 +16,7 @@ export default function App() {
   };
 
   const handleNegative = () => {
-    setCurrentValue(currentValue * -1)
+    setCurrentValue(currentValue * -1);
   };
 
   const handleFunctionClick = () => {};
