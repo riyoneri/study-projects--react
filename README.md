@@ -1,6 +1,6 @@
 # Scrimba React Projects
 
-This is one of the multiple React projects I wrked on as part of the Scrimba course.
+This is one of the multiple React projects I worked on as part of the React study journey.
 
 ## Projects included:
 
