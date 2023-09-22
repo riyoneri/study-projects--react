@@ -1,7 +1,6 @@
 import starIcon from "../images/star.svg";
 
 export default function Card(props) {
-  console.log(props);
   return (
     <div className="flex flex-col mt-10 w-56">
       <img src={`images/${props.img}`} className="w-full object-cover" />
