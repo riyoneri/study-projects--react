@@ -5,6 +5,7 @@ This is one of the multiple React projects I worked on as part of the React stud
 ## Projects included:
 
 - React Facts
+- Airbnb clone
 
 ## Installation
 
