@@ -1,6 +1,8 @@
 import ReactDOM from "react-dom/client";
-import "./styles.css"
 
-const root = ReactDOM.createRoot(document.getElementById("root"))
+import App from "./App";
+import "./styles.css";
 
-root.render(<h1>This is airbnb clone</h1>)
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(<App />);
