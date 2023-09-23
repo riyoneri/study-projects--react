@@ -19,7 +19,7 @@ export default function App() {
     setCurrentValue(currentValue * -1);
   };
 
-  const handleFunctionClick = () => {};
+  // const handleFunctionClick = () => {};
 
   const handleOperationClick = (event) => {
     const clickedOperation = event.target.textContent;
