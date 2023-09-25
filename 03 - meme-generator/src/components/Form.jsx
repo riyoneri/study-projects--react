@@ -1,6 +1,11 @@
 export default function Form() {
   return (
-    <form action="" method="" onSubmit={(e) => e.preventDefault()} className="flex flex-col gap-4">
+    <form
+      action=""
+      method=""
+      onSubmit={(e) => e.preventDefault()}
+      className="flex flex-col gap-4"
+    >
       <div className="flex justify-stretch gap-2">
         <input
           type="text"
