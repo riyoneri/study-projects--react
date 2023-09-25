@@ -1,1 +1,1 @@
-This repository is about facts about react
+This repository is about Airbnb clone
