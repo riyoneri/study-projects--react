@@ -2,7 +2,12 @@ import starIcon from "../images/star.svg";
 
 export default function Card(props) {
   return (
-    <div className="flex flex-col mt-10 w-56">
+    <div className="flex flex-col mt-10 w-56 relative">
+      {props.openSpots > 0 && (
+        <span className="absolute top-5 left-5 bg-white px-5 rounded-sm">
+          {props.openSpots}
+        </span>
+      )}
       <img src={`images/${props.img}`} className="w-full rounded-xl" />
       <div className="flex items-center gap-2 mt-1">
         <img src={starIcon} />

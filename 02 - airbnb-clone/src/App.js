@@ -4,22 +4,25 @@ import Card from "./components/Card";
 import data from "./data";
 
 export default function App() {
+  const card = data.map((item, index) => (
+    <Card
+      key={index}
+      img={item.coverImg}
+      rating={item.stats.rating}
+      reviewCount={item.stats.reviewCount}
+      country={item.location}
+      title={item.title}
+      price={item.price}
+      openSpots={item.openSpots}
+    />
+  ));
+
   return (
     <main>
       <Navbar />
       <Hero />
       <div className=" mx-auto flex flex-wrap sm:px-3 justify-center gap-5 overflow-x-scroll">
-        {data.map((item, index) => (
-          <Card
-            key={index}
-            img={item.coverImg}
-            rating={item.stats.rating}
-            reviewCount={item.stats.reviewCount}
-            country={item.location}
-            title={item.title}
-            price={item.price}
-          />
-        ))}
+        {card}
       </div>
     </main>
   );
