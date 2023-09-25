@@ -1,3 +1,12 @@
+import Navbar from "./components/Navbar";
+
 export default function App() {
-  return <main>Meme generator</main>;
+  return (
+    <main>
+      <Navbar />
+      <div>
+        
+      </div>
+    </main>
+  );
 }
