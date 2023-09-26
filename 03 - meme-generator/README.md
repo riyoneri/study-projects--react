@@ -1,1 +1,1 @@
-This repository is about meme generator
+This project is about meme generator

@@ -6,6 +6,7 @@ This is one of the multiple React projects I worked on as part of the React stud
 
 - React Facts
 - Airbnb clone
+- Events Handling
 
 ## Installation
 

@@ -1,1 +1,1 @@
-This repository is about Airbnb clone
+This project is about Airbnb clone

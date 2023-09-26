@@ -1,1 +1,1 @@
-This repository is about facts about react
+This project is about facts about react
