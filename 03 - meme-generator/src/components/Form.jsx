@@ -1,9 +1,36 @@
+import { useState } from "react";
+import memesData from "../memesData";
+
 export default function Form() {
+  const [allMemeImages, setAllMemeImages] = useState(memesData);
+
+  const [meme, setMeme] = useState({
+    topText: "",
+    bottomText: "",
+    randomImage: "http://i.imgflip.com/1bij.jpg",
+  });
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const random = Math.trunc(Math.random() * allMemeImages.data.memes.length);
+    setMeme((prevMeme) => ({
+      ...prevMeme,
+      randomImage: allMemeImages.data.memes[random].url,
+    }));
+
+    // fetch("https://api.imgflip.com/get_memes")
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //   })
+    //   .catch((err) => console.log(err));
+  };
+
   return (
     <form
       action=""
       method=""
-      onSubmit={(e) => e.preventDefault()}
+      onSubmit={handleSubmit}
       className="flex flex-col gap-4"
     >
       <div className="flex justify-stretch gap-2">
@@ -22,6 +49,7 @@ export default function Form() {
       >
         Get a new meme image 🖼
       </button>
+      <img src={meme.randomImage} className="h-32 object-contain" />
     </form>
   );
 }
