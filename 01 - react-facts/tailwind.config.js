@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         "icon-dark": "url(images/react-icon-dark.png)",
+        "icon-white": "url(images/react-icon-light.png)",
       },
       backgroundPosition: {
         "right-center": "right center",
@@ -12,4 +13,5 @@ module.exports = {
     },
   },
   plugins: [],
+  darkMode: "class",
 };
