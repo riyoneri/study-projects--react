@@ -8,6 +8,13 @@ export default function Navbar() {
         <p className="text-[#61DAFB] font-bold text-3xl">React Facts</p>
       </div>
       <p className="text-[#DEEBF8]">React Course - Project 1</p>
+      <div className="toggler">
+        <p className="toggler--light">Light</p>
+        <div className="toggler--slider">
+          <div className="toggler--slider--circle"></div>
+        </div>
+        <p className="toggler--dark">Dark</p>
+      </div>
     </nav>
   );
 }
