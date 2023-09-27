@@ -1,8 +1,7 @@
-import { useState } from "react";
-import memesData from "../memesData";
-
+import { useState, useEffect } from "react";
 export default function Form() {
-  const [allMemeImages, setAllMemeImages] = useState(memesData);
+  const [allMemes, setAllMemes] = useState([]);
+  const [inputsData, setInputData] = useState({ text1: "", text2: "" });
 
   const [meme, setMeme] = useState({
     topText: "",
@@ -13,34 +12,43 @@ export default function Form() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const random = Math.trunc(Math.random() * allMemeImages.data.memes.length);
+    const random = Math.trunc(Math.random() * allMemes.length);
     setMeme((prevMeme) => ({
       ...prevMeme,
-      randomImage: allMemeImages.data.memes[random].url,
+      randomImage: allMemes[random].url,
     }));
-
-    // fetch("https://api.imgflip.com/get_memes")
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //   })
-    //   .catch((err) => console.log(err));
   };
 
+  useEffect(() => {
+    fetch("https://api.imgflip.com/get_memes")
+      .then((res) => res.json())
+      .then((data) => {
+        setAllMemes(data.data.memes);
+      });
+  }, []);
+
+  function handleInputs(event) {
+    const { name, value } = event.target;
+
+    setInputData((prevInputData) => ({ ...prevInputData, [name]: value }));
+  }
+
   return (
-    <form
-      action=""
-      method=""
-      onSubmit={handleSubmit}
-      className="flex flex-col gap-4"
-    >
-      <div className="flex justify-stretch gap-2">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+      <div className="flex justify-stretch sm:flex-row flex-col gap-2">
         <input
           type="text"
+          name="text1"
           className="border-neutral-300 rounded-md border flex-1 p-2 focus:outline-none"
+          onChange={handleInputs}
+          value={inputsData.text1}
         />
         <input
           type="text"
+          name="text2"
           className="border-neutral-300 rounded-md border flex-1 p-2 focus:outline-none"
+          onChange={handleInputs}
+          value={inputsData.text2}
         />
       </div>
       <button
@@ -49,7 +57,18 @@ export default function Form() {
       >
         Get a new meme image 🖼
       </button>
-      <img src={meme.randomImage} className="h-32 object-contain" />
+      <div className="relative">
+        <p className="absolute left-1/2 -translate-x-1/2 top-2 text-white font-bold text-2xl text-stroke">
+          {inputsData.text1}
+        </p>
+        <img
+          src={meme.randomImage}
+          className="h-[300px] object-cover mx-auto"
+        />
+        <p className="absolute left-1/2 -translate-x-1/2 bottom-2 text-white font-bold text-2xl text-stroke">
+          {inputsData.text2}
+        </p>
+      </div>
     </form>
   );
 }
