@@ -6,33 +6,33 @@ import Split from "react-split";
 import { nanoid } from "nanoid";
 
 export default function App() {
-  const [notes, setNotes] = React.useState(
-    () => JSON.parse(localStorage.getItem("notes")) || []
-  );
-  const [currentNoteId, setCurrentNoteId] = React.useState(
-    (notes[0] && notes[0].id) || ""
-  );
+                        const [notes, setNotes] = React.useState(
+                          () => JSON.parse(localStorage.getItem("notes")) || []
+                        );
+                        const [currentNoteId, setCurrentNoteId] = React.useState(
+                          (notes[0] && notes[0].id) || ""
+                        );
 
-  React.useEffect(() => {
-    localStorage.setItem("notes", JSON.stringify(notes));
-  }, [notes]);
+                        React.useEffect(() => {
+                          localStorage.setItem("notes", JSON.stringify(notes));
+                        }, [notes]);
 
-  function createNewNote() {
-    const newNote = {
-      id: nanoid(),
-      body: "# Type your markdown note's title here",
-    };
-    setNotes((prevNotes) => [newNote, ...prevNotes]);
-    setCurrentNoteId(newNote.id);
+                        function createNewNote() {
+                          const newNote = {
+                            id: nanoid(),
+                            body: "# Type your markdown note's title here",
+                          };
+                          setNotes((prevNotes) => [newNote, ...prevNotes]);
+                          setCurrentNoteId(newNote.id);
   }
 
   function updateNote(text) {
-    // Put the most recently-modified note at the top
     setNotes((oldNotes) => {
       const newArray = [];
       for (let i = 0; i < oldNotes.length; i++) {
         const oldNote = oldNotes[i];
         if (oldNote.id === currentNoteId) {
+          // Put the most recently-modified note at the top
           newArray.unshift({ ...oldNote, body: text });
         } else {
           newArray.push(oldNote);
@@ -42,21 +42,9 @@ export default function App() {
     });
   }
 
-  /**
-   * Challenge: complete and implement the deleteNote function
-   *
-   * Hints:
-   * 1. What array method can be used to return a new
-   *    array that has filtered out an item based
-   *    on a condition?
-   * 2. Notice the parameters being based to the function
-   *    and think about how both of those parameters
-   *    can be passed in during the onClick event handler
-   */
-
   function deleteNote(event, noteId) {
     event.stopPropagation();
-    setNotes((oldNotes) => oldNotes.filter((oldNote) => oldNote.id !== noteId));
+    setNotes((oldNotes) => oldNotes.filter((note) => note.id !== noteId));
   }
 
   function findCurrentNote() {
@@ -76,7 +64,7 @@ export default function App() {
             currentNote={findCurrentNote()}
             setCurrentNoteId={setCurrentNoteId}
             newNote={createNewNote}
-            onDeleteNote={deleteNote}
+            deleteNote={deleteNote}
           />
           {currentNoteId && notes.length > 0 && (
             <Editor currentNote={findCurrentNote()} updateNote={updateNote} />
