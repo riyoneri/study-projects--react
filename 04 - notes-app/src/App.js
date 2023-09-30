@@ -18,9 +18,12 @@ export default function App() {
   }, [notes]);
 
   function createNewNote() {
+    const nowDate = Date.now();
     const newNote = {
       id: nanoid(),
       body: "# Type your markdown note's title here",
+      createdAt: nowDate,
+      updatedAt: nowDate,
     };
     setNotes((prevNotes) => [newNote, ...prevNotes]);
     setCurrentNoteId(newNote.id);
@@ -32,8 +35,7 @@ export default function App() {
       for (let i = 0; i < oldNotes.length; i++) {
         const oldNote = oldNotes[i];
         if (oldNote.id === currentNoteId) {
-          // Put the most recently-modified note at the top
-          newArray.unshift({ ...oldNote, body: text });
+          newArray.unshift({ ...oldNote, body: text, updatedAt: Date.now() });
         } else {
           newArray.push(oldNote);
         }
@@ -56,7 +58,7 @@ export default function App() {
             currentNote={currentNote}
             setCurrentNoteId={setCurrentNoteId}
             newNote={createNewNote}
-            deleteNote={deleteNote}
+            onDeleteNote={deleteNote}
           />
           {currentNoteId && notes.length > 0 && (
             <Editor currentNote={currentNote} updateNote={updateNote} />
