@@ -13,6 +13,9 @@ export default function App() {
   const currentNote =
     notes.find((note) => note.id === currentNoteId) || notes[0];
 
+  const sortedNotes = notes.sort((a, b) => b.updatedAt > a.updatedAt);
+  console.table(sortedNotes);
+
   React.useEffect(() => {
     localStorage.setItem("notes", JSON.stringify(notes));
   }, [notes]);
