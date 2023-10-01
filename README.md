@@ -10,6 +10,7 @@ This is one of the multiple React projects I worked on as part of the React stud
 - Events Handling
 - Notes App
 - Coder Files exercises
+    - Hello world
 
 ## Installation
 
