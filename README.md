@@ -8,7 +8,7 @@ This is one of the multiple React projects I worked on as part of the React stud
 - Airbnb clone
 - Memes Generator
 - Events Handling
-- Form
+- Notes App
 
 ## Installation
 
