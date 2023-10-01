@@ -1,16 +1,19 @@
+import { useState } from "react";
+
 export default function App() {
+  const [counts, seCounts] = useState(0);
+
+  const handleClick = () => seCounts((prevCounts) => ++prevCounts);
+
   return (
-    <div className="flex gap-10 justify-center flex-wrap px-10 text-blue-600 mt-10">
-      <a href="/">Home</a>
-      <a href="/" target="_blank">Exercise 1</a>
-      <a href="/" target="_blank">Exercise 2</a>
-      <a href="/" target="_blank">Exercise 3</a>
-      <a href="/" target="_blank">Exercise 4</a>
-      <a href="/" target="_blank">Exercise 5</a>
-      <a href="/" target="_blank">Exercise 6</a>
-      <a href="/" target="_blank">Exercise 7</a>
-      <a href="/" target="_blank">Exercise 8</a>
-      <a href="/" target="_blank">Exercise 9</a>
+    <div className="flex flex-col h-screen gap-5 justify-center items-center">
+      <p>Button has been clicked: {counts} times</p>
+      <button
+        onClick={handleClick}
+        className="px-5 py-2 bg-[#FEC800] rounded-sm"
+      >
+        Click Me
+      </button>
     </div>
   );
 }
