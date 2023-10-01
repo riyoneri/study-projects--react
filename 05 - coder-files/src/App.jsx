@@ -1,16 +1,25 @@
+import Card from "./components/Card";
+
+const DATA = [
+  {
+    id: 1,
+    setup: "What's the best thing about a Boolean?",
+    punchline: "Even if you're wrong, you're only off by a bit",
+  },
+  {
+    id: 2,
+    setup: "Why do programmers wear glasses?",
+    punchline: "Because they need to C#",
+  },
+];
+
 export default function App() {
+  const dataElements = DATA.map((item) => <Card key={item.id} {...item} />);
   return (
-    <div className="flex gap-10 justify-center flex-wrap px-10 text-blue-600 mt-10">
-      <a href="/">Home</a>
-      <a href="/" target="_blank">Exercise 1</a>
-      <a href="/" target="_blank">Exercise 2</a>
-      <a href="/" target="_blank">Exercise 3</a>
-      <a href="/" target="_blank">Exercise 4</a>
-      <a href="/" target="_blank">Exercise 5</a>
-      <a href="/" target="_blank">Exercise 6</a>
-      <a href="/" target="_blank">Exercise 7</a>
-      <a href="/" target="_blank">Exercise 8</a>
-      <a href="/" target="_blank">Exercise 9</a>
+    <div className="flex justify-center items-center px-5 sm:px-10 bg-[#E0F8DB] h-screen">
+      <div className="max-w-7xl mx-auto flex justify-center gap-10 items-stretch flex-col lg:flex-row">
+        {dataElements}
+      </div>
     </div>
   );
 }
