@@ -5,8 +5,10 @@ export default function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (textInputs.firstName && textInputs.lastName)
-      alert(`Hello ${textInputs.firstName} ${textInputs.lastName} !`);
+    if (!textInputs.firstName || !textInputs.lastName) return;
+
+    alert(`Hello ${textInputs.firstName} ${textInputs.lastName}!`);
+    setTextInputs({ firstName: "", lastName: "" });
   };
 
   const handleChange = (event) => {
