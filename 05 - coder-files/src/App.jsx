@@ -5,6 +5,7 @@ export default function App() {
 
   const handleClick = () => seCounts((prevCounts) => ++prevCounts);
 
+  const handleClick = (position) => alert(`You clicked on Button ${position}`);
   return (
     <div className="flex flex-col h-screen gap-5 justify-center items-center">
       <p>Button has been clicked: {counts} times</p>
