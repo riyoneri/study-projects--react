@@ -9,6 +9,7 @@ This is one of the multiple React projects I worked on as part of the React stud
 - Memes Generator
 - Events Handling
 - Notes App
+- Coder Files exercises
 
 ## Installation
 
@@ -18,13 +19,13 @@ To get started with this project:
 1. Clone the repo:
 
 ```
-git clone https://github.com/riyoneri/react-study-projects--scrimba.git
+git clone https://github.com/riyoneri/study-projects--react.git
 ```
 
 2. Navigate to the project main directory:
 
 ```
-cd react-study-projects--scrimba
+cd study-project--react
 ```
 
 3. Navigate to desired project:
