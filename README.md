@@ -1,4 +1,4 @@
-# Scrimba React Projects
+# React Study Projects
 
 This is one of the multiple React projects I worked on as part of the React study journey.
 
