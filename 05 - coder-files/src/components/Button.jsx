@@ -1,9 +1,7 @@
-export default function Button({ position, children, onClick }) {
-  const handleClick = () => onClick(position);
-
+export default function Button({ children, onClick }) {
   return (
     <button
-      onClick={handleClick}
+      onClick={onClick}
       className="bg-[#FEC800] px-5 py-2 rounded-sm sm:text-xl"
     >
       {children}
