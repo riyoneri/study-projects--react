@@ -15,7 +15,7 @@ export default function App() {
   const displayUsers = users.map((user) => <Card key={user.id} {...user} />);
 
   return (
-    <div className="flex justify-center bg-[#E1F6DC]">
+    <div className="flex justify-center min-h-screen bg-[#E1F6DC]">
       <div className="grid gap-5 sm:gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 my-10 px-5">
         <div className="sm:col-span-2 lg:col-span-3 xl:col-span-4 text-center">
           <button
