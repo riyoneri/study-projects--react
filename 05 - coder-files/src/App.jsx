@@ -1,16 +1,18 @@
+import Button from "./components/Button";
+
 export default function App() {
+  const handleClick = (position) => alert(`You clicked on Button ${position}`);
   return (
-    <div className="flex gap-10 justify-center flex-wrap px-10 text-blue-600 mt-10">
-      <a href="/">Home</a>
-      <a href="/" target="_blank">Exercise 1</a>
-      <a href="/" target="_blank">Exercise 2</a>
-      <a href="/" target="_blank">Exercise 3</a>
-      <a href="/" target="_blank">Exercise 4</a>
-      <a href="/" target="_blank">Exercise 5</a>
-      <a href="/" target="_blank">Exercise 6</a>
-      <a href="/" target="_blank">Exercise 7</a>
-      <a href="/" target="_blank">Exercise 8</a>
-      <a href="/" target="_blank">Exercise 9</a>
+    <div className="flex justify-center gap-10 sm:flex-row flex-col items-center h-screen">
+      <Button onClick={handleClick} position={1}>
+        Button 1
+      </Button>
+      <Button onClick={handleClick} position={2}>
+        Button 2
+      </Button>
+      <Button onClick={handleClick} position={3}>
+        Button 3
+      </Button>
     </div>
   );
 }
