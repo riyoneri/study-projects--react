@@ -8,7 +8,10 @@ export default function App() {
   useEffect(() => {
     fetch("https://random-data-api.com/api/users/random_user?size=12")
       .then((res) => res.json())
-      .then((data) => setUsers(data))
+      .then((data) => {
+        console.log(data[0]);
+        setUsers(data);
+      })
       .catch((err) => console.log(err));
   }, [change]);
 
