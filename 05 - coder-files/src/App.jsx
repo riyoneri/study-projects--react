@@ -1,16 +1,15 @@
+import { useState } from "react";
+import Button from "./components/Button";
+
 export default function App() {
+  const [counts, seCounts] = useState(0);
+
+  const incrementCount = () => seCounts((prevCounts) => ++prevCounts);
+
   return (
-    <div className="flex gap-10 justify-center flex-wrap px-10 text-blue-600 mt-10">
-      <a href="/">Home</a>
-      <a href="/" target="_blank">Exercise 1</a>
-      <a href="/" target="_blank">Exercise 2</a>
-      <a href="/" target="_blank">Exercise 3</a>
-      <a href="/" target="_blank">Exercise 4</a>
-      <a href="/" target="_blank">Exercise 5</a>
-      <a href="/" target="_blank">Exercise 6</a>
-      <a href="/" target="_blank">Exercise 7</a>
-      <a href="/" target="_blank">Exercise 8</a>
-      <a href="/" target="_blank">Exercise 9</a>
+    <div className="flex flex-col h-screen gap-5 justify-center items-center">
+      <p className="sm:text-2xl">Button has been clicked: {counts} times</p>
+      <Button onClick={incrementCount}>Click Me</Button>
     </div>
   );
 }
