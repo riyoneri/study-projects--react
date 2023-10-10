@@ -9,6 +9,9 @@ This is one of the multiple React projects I worked on as part of the React stud
 - Memes Generator
 - Events Handling
 - Notes App
+- Conditional Rendering
+- Form Submission
+- Tenzies game
 
 ## Installation
 
