@@ -5,16 +5,47 @@ import NumberButton from "./components/Die";
 const buttons = Array.from({ length: 10 }, (_, i) => i + 1);
 
 export default function App() {
+  const initialFrozenNumbers = buttons.map((button, index) => ({
+    index,
+    button,
+  }));
+
   const [changeNumbers, setChangeNumbers] = useState(false);
   const [gameOver, setGameOver] = useState(false);
+  const [frozenNumbers, setFrozenNumbers] = useState(initialFrozenNumbers);
+
+  console.table(frozenNumbers);
 
   const displayButtons = buttons.map((button) => (
-    <NumberButton changeNumberToggler={changeNumbers} key={button} />
+    <NumberButton
+      changeNumberToggler={changeNumbers}
+      index={button - 1}
+      key={button}
+      onToggleFreeze={toggleFrozenNumber}
+    />
   ));
 
   const handleRoll = () => {
     setChangeNumbers(!changeNumbers);
   };
+
+  function toggleFrozenNumber(index, action, newNumber) {
+    if (action === "push") {
+      setFrozenNumbers((prevFrozenNumbers) => {
+        prevFrozenNumbers[index] = newNumber;
+        return prevFrozenNumbers;
+      });
+    } else {
+      setFrozenNumbers((prevFrozenNumbers) => {
+        prevFrozenNumbers[index] = {
+          index,
+          button: prevFrozenNumbers[index],
+        };
+
+        return prevFrozenNumbers;
+      });
+    }
+  }
 
   return (
     <main className="grid h-screen place-content-center px-5">
@@ -27,11 +58,10 @@ export default function App() {
         <div className="grid grid-cols-5 gap-5">{displayButtons}</div>
         <div className="text-center mt-5">
           <button
-            disabled={gameOver}
             onClick={handleRoll}
             className="bg-[#5035FF] text-white px-14 py-2 rounded-md"
           >
-            Roll
+            {gameOver ? "Reset Game" : "Roll"}
           </button>
         </div>
       </div>
