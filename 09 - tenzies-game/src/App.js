@@ -1,17 +1,18 @@
 import { useState } from "react";
 
-import NumberButton from "./components/NumberButton";
+import NumberButton from "./components/Die";
 
 const buttons = Array.from({ length: 10 }, (_, i) => i + 1);
 
 export default function App() {
   const [changeNumbers, setChangeNumbers] = useState(false);
+  const [gameOver, setGameOver] = useState(false);
 
   const displayButtons = buttons.map((button) => (
     <NumberButton changeNumberToggler={changeNumbers} key={button} />
   ));
 
-  const handleChangeNumbers = () => {
+  const handleRoll = () => {
     setChangeNumbers(!changeNumbers);
   };
 
@@ -26,7 +27,8 @@ export default function App() {
         <div className="grid grid-cols-5 gap-5">{displayButtons}</div>
         <div className="text-center mt-5">
           <button
-            onClick={handleChangeNumbers}
+            disabled={gameOver}
+            onClick={handleRoll}
             className="bg-[#5035FF] text-white px-14 py-2 rounded-md"
           >
             Roll
