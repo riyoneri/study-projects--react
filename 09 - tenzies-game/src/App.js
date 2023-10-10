@@ -14,18 +14,18 @@ export default function App() {
   const [gameOver, setGameOver] = useState(false);
   const [frozenNumbers, setFrozenNumbers] = useState(initialFrozenNumbers);
 
-  console.table(frozenNumbers);
-
   const displayButtons = buttons.map((button) => (
     <NumberButton
       changeNumberToggler={changeNumbers}
       index={button - 1}
       key={button}
       onToggleFreeze={toggleFrozenNumber}
+      gameOver={gameOver}
     />
   ));
 
   const handleRoll = () => {
+    if (gameOver) setGameOver(false);
     setChangeNumbers(!changeNumbers);
   };
 
@@ -44,6 +44,12 @@ export default function App() {
 
         return prevFrozenNumbers;
       });
+    }
+
+    if (
+      frozenNumbers.every((frozenNumber) => frozenNumber === frozenNumbers[0])
+    ) {
+      setGameOver(true);
     }
   }
 

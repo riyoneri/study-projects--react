@@ -4,6 +4,7 @@ export default function NumberButton({
   changeNumberToggler,
   index,
   onToggleFreeze,
+  gameOver,
 }) {
   const [randomNumber, setRandomNumber] = useState(
     Math.trunc(Math.random() * 7)
@@ -22,7 +23,7 @@ export default function NumberButton({
     } else {
       onToggleFreeze(index, "push", +event.target.textContent);
     }
-    setFrozen(!frozen);
+    setFrozen(gameOver ? true : !frozen);
   };
 
   return (
