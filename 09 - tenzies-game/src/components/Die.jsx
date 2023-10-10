@@ -5,6 +5,7 @@ export default function NumberButton({
   index,
   onToggleFreeze,
   gameOver,
+  resetGame,
 }) {
   const [randomNumber, setRandomNumber] = useState(
     Math.trunc(Math.random() * 7)
@@ -13,9 +14,13 @@ export default function NumberButton({
   const [frozen, setFrozen] = useState(false);
 
   useEffect(() => {
+    if (resetGame && !gameOver) {
+      setFrozen(false);
+      setRandomNumber(Math.trunc(Math.random() * 7));
+    }
     if (frozen) return;
     setRandomNumber(Math.trunc(Math.random() * 7));
-  }, [changeNumberToggler]);
+  }, [changeNumberToggler, resetGame]);
 
   const toggleFreeze = (event) => {
     if (frozen) {

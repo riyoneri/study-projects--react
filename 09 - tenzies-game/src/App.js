@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import NumberButton from "./components/Die";
+import Die from "./components/Die";
 
 const buttons = Array.from({ length: 10 }, (_, i) => i + 1);
 
@@ -13,19 +13,26 @@ export default function App() {
   const [changeNumbers, setChangeNumbers] = useState(false);
   const [gameOver, setGameOver] = useState(false);
   const [frozenNumbers, setFrozenNumbers] = useState(initialFrozenNumbers);
+  const [resetAll, setResetAll] = useState(false);
 
   const displayButtons = buttons.map((button) => (
-    <NumberButton
+    <Die
       changeNumberToggler={changeNumbers}
       index={button - 1}
       key={button}
       onToggleFreeze={toggleFrozenNumber}
       gameOver={gameOver}
+      resetGame={resetAll}
     />
   ));
 
   const handleRoll = () => {
-    if (gameOver) setGameOver(false);
+    setResetAll(false);
+    if (gameOver) {
+      setResetAll(true);
+      setGameOver(false);
+      setFrozenNumbers(initialFrozenNumbers);
+    }
     setChangeNumbers(!changeNumbers);
   };
 
