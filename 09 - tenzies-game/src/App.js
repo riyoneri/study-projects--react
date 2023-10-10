@@ -62,13 +62,13 @@ export default function App() {
 
   return (
     <main className="grid h-screen place-content-center px-5">
-      <div className="shadow-md bg-white rounded-lg p-14 grid gap-5 justify-items-center">
+      <div className="shadow-md bg-white rounded-lg p-5 sm:p-14 grid gap-5 justify-items-center">
         <p className="text-[#2B283A] font-semibold text-2xl">Tenzies</p>
         <p className="text-[#4A4E74] text-sm sm:text-base">
           Roll until all dice are the same. Click each die to freeze it current
           value between rolls.
         </p>
-        <div className="grid grid-cols-5 gap-5">{displayButtons}</div>
+        <div className="grid grid-cols-3 sm:grid-cols-5 gap-5">{displayButtons}</div>
         <div className="text-center mt-5">
           <button
             onClick={handleRoll}
