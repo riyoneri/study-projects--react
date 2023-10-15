@@ -23,7 +23,7 @@ export default function App() {
     setCurrentValue(0);
     setFirstNum(0);
     setLastNum(0);
-    setOperation(0);
+    setOperation(0)
   };
 
   const handleEqualClick = () => {
