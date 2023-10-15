@@ -19,10 +19,16 @@ export default function App() {
     setCurrentValue(currentValue * -1);
   };
 
-  // const handleFunctionClick = () => {};
+  const handleFunctionClick = () => {};
+
+  const handleEqualClick = () => {
+    setCurrentValue(
+      eval(`${firstNum} ${operation} ${lastNum || currentValue}`)
+    );
+  };
 
   const handleOperationClick = (event) => {
-    const clickedOperation = event.target.textContent;
+    let clickedOperation = event.target.textContent;
     if (!operation) {
       setFirstNum(currentValue);
       setCurrentValue(0);
@@ -30,6 +36,9 @@ export default function App() {
       setLastNum(currentValue);
       setCurrentValue(0);
     }
+
+    clickedOperation === "÷" && (clickedOperation = "/");
+    clickedOperation === "x" && (clickedOperation = "*");
 
     setOperation(clickedOperation);
   };
@@ -47,7 +56,7 @@ export default function App() {
           onClick={handleOperationClick}
           style="active:bg-[#d9762f] bg-[#f48637]"
         >
-          +
+          ÷
         </Button>
 
         <Button onClick={handleNumberClick}>7</Button>
@@ -84,7 +93,12 @@ export default function App() {
           0
         </Button>
         <Button>.</Button>
-        <Button style="active:bg-[#d9762f] bg-[#f48637]">=</Button>
+        <Button
+          onClick={handleEqualClick}
+          style="active:bg-[#d9762f] bg-[#f48637]"
+        >
+          =
+        </Button>
       </div>
     </div>
   );
