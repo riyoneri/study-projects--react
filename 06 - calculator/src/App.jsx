@@ -27,9 +27,15 @@ export default function App() {
   };
 
   const handleEqualClick = () => {
-    setCurrentValue(
-      eval(`${firstNum} ${operation} ${lastNum || currentValue}`)
-    );
+    if (!operation) {
+      setCurrentValue(currentValue);
+    } else {
+      setCurrentValue(
+        eval(`${firstNum} ${operation} ${lastNum || currentValue}`)
+      );
+    }
+    setOperation(null);
+    setLastNum(0);
   };
 
   const handleOperationClick = (event) => {
