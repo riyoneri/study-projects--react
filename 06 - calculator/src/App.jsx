@@ -19,7 +19,12 @@ export default function App() {
     setCurrentValue(currentValue * -1);
   };
 
-  const handleFunctionClick = () => {};
+  const handleClearClick = () => {
+    setCurrentValue(0);
+    setFirstNum(0);
+    setLastNum(0);
+    setOperation(0);
+  };
 
   const handleEqualClick = () => {
     setCurrentValue(
@@ -49,7 +54,7 @@ export default function App() {
         <span className="text-white text-2xl col-span-4 text-end px-3 py-2">
           {currentValue}
         </span>
-        <Button onClick={handleFunctionClick}>AC</Button>
+        <Button onClick={handleClearClick}>AC</Button>
         <Button onClick={handleNegative}>+/-</Button>
         <Button onClick={handleOperationClick}>%</Button>
         <Button
