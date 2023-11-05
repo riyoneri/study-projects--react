@@ -85,7 +85,7 @@ export default function App() {
             <input
               type="text"
               name="text"
-              className="flex-1 bg-transparent focus:outline-none"
+              className="flex-1 text-sm bg-transparent focus:outline-none"
               onChange={handleInputChange}
               value={inputValue}
             />
