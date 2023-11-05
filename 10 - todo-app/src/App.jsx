@@ -51,6 +51,14 @@ export default function App() {
     setTodos(currentTodos);
   };
 
+  const removeTodo = (id) => {
+    const currentTodos = [...todos];
+
+    const updatedTodos = currentTodos.filter((todo) => todo.id !== id);
+
+    setTodos(updatedTodos);
+  };
+
   let pendingTodos = <div className="text-center">All tasks done</div>;
   let completedTodos = <div className="text-center">No tasks completed</div>;
 
@@ -59,7 +67,12 @@ export default function App() {
       .filter((todo) => !todo.checked)
       .reverse()
       .map((todo) => (
-        <Todo key={todo.id} {...todo} onToggleComplete={toggleComplete} />
+        <Todo
+          key={todo.id}
+          {...todo}
+          onToggleComplete={toggleComplete}
+          onRemoveTodo={removeTodo}
+        />
       ));
   }
 
@@ -68,7 +81,12 @@ export default function App() {
       .filter((todo) => todo.checked)
       .reverse()
       .map((todo) => (
-        <Todo key={todo.id} {...todo} onToggleComplete={toggleComplete} />
+        <Todo
+          key={todo.id}
+          {...todo}
+          onToggleComplete={toggleComplete}
+          onRemoveTodo={removeTodo}
+        />
       ));
   }
 
@@ -103,9 +121,7 @@ export default function App() {
         </div>
         <div className="mt-10 text-white">
           <h3>COMPLETED</h3>
-          <div className="mt-3 space-y-2">
-            {completedTodos}
-          </div>
+          <div className="mt-3 space-y-2">{completedTodos}</div>
         </div>
       </div>
     </div>
