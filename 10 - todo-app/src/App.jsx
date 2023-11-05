@@ -1,23 +1,47 @@
+import classNames from "classnames";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faCheck, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 
 export default function App() {
+  const [inputValue, setInputValue] = useState("");
+  const [formError, setFormError] = useState(false);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const formValue = inputValue.trim();
+
+    if (!formValue) {
+      setFormError(true);
+      return;
+    }
+  };
+
+  const handleInputChange = (e) => {
+    setFormError(false);
+    setInputValue(e.target.value);
   };
 
   return (
-    <div className="bg-[#7AB8E1] min-h-screen flex px-5 sm:px-10 items-center justify-center">
-      <div className="py-10 px-5 sm:px-10 bg-[#312F58] w-full md:w-1/2 lg:w-1/3 rounded-lg flex flex-col">
+    <div className="bg-[#7AB8E1] min-h-screen flex text-sm sm:text-base px-5 sm:px-10 items-center justify-center">
+      <div className="py-10 px-5 sm:px-10 bg-[#312F58] w-full md:w-1/2 xl:w-1/3 rounded-lg flex flex-col">
         <form onSubmit={handleSubmit}>
-          <label className="bg-[#27264D] transition border-2 border-red-400 px-3 py-2 rounded-full text-white flex gap-2 items-center">
+          <label
+            className={classNames([
+              "bg-[#27264D] px-1 pl-4 py-1 rounded-full text-white flex gap-2 items-center",
+              formError && "border-red-400 border-2",
+            ])}
+          >
             <input
               type="text"
               name="text"
               className="flex-1 bg-transparent focus:outline-none"
+              onChange={handleInputChange}
             />
-            <button className="text-xl sm:text-3xl font-bold bg-[#3276A6] p-2 flex items-center justify-center rounded-full">
+            <button className="text-xl sm:text-3xl font-bold bg-[#3276A6] p-1 sm:p-2 flex items-center justify-center rounded-full">
               <FontAwesomeIcon
                 icon={faPlus}
                 className="h-5 w-5 cursor-pointer"
