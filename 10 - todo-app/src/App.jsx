@@ -59,8 +59,8 @@ export default function App() {
     setTodos(updatedTodos);
   };
 
-  let pendingTodos = <div className="text-center">All tasks done</div>;
-  let completedTodos = <div className="text-center">No tasks completed</div>;
+  let pendingTodos = <div className="ml-4 text-sm">All tasks done</div>;
+  let completedTodos = <div className="ml-4 text-sm">No tasks completed</div>;
 
   if (todos.some((todo) => !todo.checked)) {
     pendingTodos = todos
