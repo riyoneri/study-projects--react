@@ -10,7 +10,9 @@ import Todo from "./components/Todo";
 export default function App() {
   const [inputValue, setInputValue] = useState("");
   const [formError, setFormError] = useState(false);
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(
+    JSON.parse(localStorage.getItem("todos")) || []
+  );
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,6 +30,9 @@ export default function App() {
         text: formValue,
         id: prevTodos.length,
       });
+
+      localStorage.setItem("todos", JSON.stringify(prevTodos));
+
       return prevTodos;
     });
 
@@ -48,6 +53,8 @@ export default function App() {
 
     currentTodos.splice(id, 1, targetTodo);
 
+    localStorage.setItem("todos", JSON.stringify(currentTodos));
+
     setTodos(currentTodos);
   };
 
@@ -55,6 +62,8 @@ export default function App() {
     const currentTodos = [...todos];
 
     const updatedTodos = currentTodos.filter((todo) => todo.id !== id);
+
+    localStorage.setItem("todos", JSON.stringify(updatedTodos));
 
     setTodos(updatedTodos);
   };
